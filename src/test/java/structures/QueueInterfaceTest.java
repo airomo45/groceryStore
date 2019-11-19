@@ -13,7 +13,7 @@ import config.Configuration;
 public class QueueInterfaceTest {
 
 	private QueueInterface<String> queue;
-	
+
 	@Before
 	public void setup() {
 		queue = null;
@@ -24,7 +24,7 @@ public class QueueInterfaceTest {
 		if(queue == queue2)
 			fail("The getQueueImplementation method must return a NEW queue");
 	}
-	
+
 	@Test (timeout = 100)
 	public void testEnqueueSize() {
 		queue.enqueue("One");
@@ -36,7 +36,7 @@ public class QueueInterfaceTest {
 		queue.enqueue("Four");
 		assertEquals(4, queue.size());
 	}
-	
+
 	@Test (timeout = 500)
 	public void testEnqueueSize2() {
 		QueueInterface<Integer> queue = Configuration.getQueueImplementation();
@@ -65,7 +65,7 @@ public class QueueInterfaceTest {
 		assertEquals("Four", queue.dequeue());
 		assertEquals(0, queue.size());
 	}
-	
+
 	@Test (timeout = 500)
 	public void testEnqueueDequeueSize2(){
 		QueueInterface<Integer> queue = Configuration.getQueueImplementation();
@@ -74,7 +74,7 @@ public class QueueInterfaceTest {
 			assertEquals(i, queue.size());
 			queue.enqueue(i);
 		}
-		
+
 		for(int i = max - 1; i >= max; i ++){
 			assertEquals(i, queue.size());
 			Integer r = queue.dequeue();
@@ -82,72 +82,72 @@ public class QueueInterfaceTest {
 			assertEquals(i, queue.dequeue().intValue());
 		}
 	}
-	
+
 	@Test (timeout = 100)
 	public void testEnqueueIsEmptyDequeue(){
-		
+
 		assertTrue(queue.isEmpty());
-		
+
 		assertEquals(queue, queue.enqueue("hello"));
 		assertFalse(queue.isEmpty());
-		
+
 		assertEquals("hello", queue.dequeue());
 		assertTrue(queue.isEmpty());
-		
+
 		assertEquals(queue, queue.enqueue("hello"));
 		assertFalse(queue.isEmpty());
-		
+
 		assertEquals(queue, queue.enqueue("there"));
 		assertFalse(queue.isEmpty());
-		
+
 		assertEquals(queue, queue.enqueue("world"));
 		assertFalse(queue.isEmpty());
-		
+
 		assertEquals("hello", queue.dequeue());
 		assertFalse(queue.isEmpty());
-		
+
 		assertEquals("there", queue.dequeue());
 		assertFalse(queue.isEmpty());
-		
+
 		assertEquals("world", queue.dequeue());
 		assertTrue(queue.isEmpty());
-		
+
 	}
-	
+
 	@Test (timeout = 100)
 	public void testEnqueueToString(){
 		assertEquals("[]", queue.toString());
-		
+
 		queue.enqueue("Hello");
 		assertEquals("[Hello]", queue.toString());
-		
+
 		QueueInterface<Integer> queue2 = Configuration.getQueueImplementation();
 		queue2.enqueue(1).enqueue(2).enqueue(3);
 		assertEquals("[1, 2, 3]", queue2.toString());
-		
+
 		queue.enqueue("World");
 		assertEquals("[Hello, World]", queue.toString());
-		
+
 	}
-	
+
 	@Test (timeout = 100, expected = NullPointerException.class)
 	public void testNullPointerException(){
 		queue.enqueue(null);
 	}
-	
+
 	@Test (timeout = 100, expected = IllegalStateException.class)
 	public void testIllegalStateException1(){
 		queue.dequeue();
 	}
-	
+
 	@Test (timeout = 100, expected = IllegalStateException.class)
 	public void testIllegalStateException2(){
 		queue.enqueue("One").enqueue("Two").enqueue("Three");
-		
+
 		queue.dequeue();
 		queue.dequeue();
 		queue.dequeue();
 		queue.dequeue();
 	}
-	
+
 }

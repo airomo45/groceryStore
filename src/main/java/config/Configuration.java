@@ -2,6 +2,8 @@ package config;
 
 import java.util.List;
 
+//import config.Queue.Queue;
+import config.Queue.Queue;
 import simulator.checkout.AbstractReceipt;
 import simulator.checkout.AbstractRegister;
 import simulator.checkout.CheckoutLineInterface;

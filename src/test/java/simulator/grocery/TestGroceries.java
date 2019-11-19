@@ -16,7 +16,7 @@ public class TestGroceries {
 		assertEquals(1.25, milk.getCost(), 0.0);
 		assertEquals(0.1, milk.getHandlingRating(), 0);
 	}
-	
+
 	@Test (timeout = 100)
 	public void testEggs() {
 		GroceryInterface eggs = Groceries.getEggs();
@@ -25,7 +25,7 @@ public class TestGroceries {
 		assertEquals(0.25, eggs.getCost(), 0.0);
 		assertEquals(0.8, eggs.getHandlingRating(), 0);
 	}
-	
+
 	@Test (timeout = 100)
 	public void testColdPocket() {
 		GroceryInterface coldPocket = Groceries.getColdPocket();
@@ -34,7 +34,7 @@ public class TestGroceries {
 		assertEquals(0.02, coldPocket.getCost(), 0.0);
 		assertEquals(0.13, coldPocket.getHandlingRating(), 0);
 	}
-	
+
 	@Test (timeout = 100)
 	public void testChips() {
 		GroceryInterface chips = Groceries.getChips();
@@ -52,7 +52,7 @@ public class TestGroceries {
 		assertEquals(1.14, wheresTheBeef.getCost(), 0.0);
 		assertEquals(0.75, wheresTheBeef.getHandlingRating(), 0);
 	}
-	
+
 	@Test (timeout = 100)
 	public void testApple() {
 		GroceryInterface apple = Groceries.getApple();
